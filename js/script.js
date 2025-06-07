@@ -312,13 +312,39 @@ function loopFogos() {
 }
 loopFogos();
 
+let autoFogoTimeout = null;
+let pageVisible = true;
+
+// Inicia fogos automáticos (com controle de visibilidade)
 function autoFogo() {
+  if (!pageVisible) return; // Não dispara se a página estiver oculta
   const x = 80 + Math.random() * (wFogos - 160);
   const y = 70 + Math.random() * (hFogos * 0.24);
   dispararFogo(x, y);
-  setTimeout(autoFogo, 1500 + Math.random() * 1900);
+  autoFogoTimeout = setTimeout(autoFogo, 1500 + Math.random() * 1900);
 }
-autoFogo();
+
+let wasPlaying = false;
+
+// Controle de visibilidade da página
+document.addEventListener('visibilitychange', function() {
+  pageVisible = !document.hidden;
+  if (!pageVisible) {
+    clearTimeout(autoFogoTimeout);
+    // Salva antes de pausar!
+    wasPlaying = !audio.paused;
+    if (wasPlaying) audio.pause();
+    autoFogoTimeout = null;
+  } else {
+    if (!autoFogoTimeout) autoFogo();
+    if (wasPlaying && audio.paused) {
+      audio.play().catch(()=>{});
+    }
+  }
+});
+
+// Inicialização (só dispara se estiver visível)
+if (!document.hidden) autoFogo();
 
 // 10. CLIQUE PARA FOGOS
 document.body.addEventListener('click', function(e){
