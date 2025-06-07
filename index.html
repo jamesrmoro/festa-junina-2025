@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Festa Junina 2025</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <!-- Botão Menu -->
+  <button id="btnMenuFJ" class="menu-btn-fj" aria-label="Abrir menu" type="button">
+    <span id="menuIcon">☰</span>
+  </button>
+
+  <!-- Menu Lateral -->
+  <aside class="menu-lateral-fj" id="menuLateralFJ">
+    <div class="logo-junina-fj">
+      <span class="fj-festa">Festa</span>
+      <span class="fj-junina">Junina</span>
+      <span class="fj-sub">WELCOME TO BRAZIL</span>
+    </div>
+    <section class="painel-junina-fj" id="sobre">
+      <h1>What is Festa Junina?</h1>
+      <p>
+        <b>Festa Junina</b> is a traditional Brazilian folk celebration held throughout the country during the month of June. Inspired by Catholic saints’ festivals (Saint John, Saint Anthony, and Saint Peter), it brings together typical foods, quadrilha dances, games, regional music, and lots of joy.
+      </p>
+      <p>
+        The decorations are colorful, with pennant flags, balloons, stalls, and a rural atmosphere that recalls the Brazilian countryside. It’s a time for gathering, dancing, bonfires, and vibrant culture.
+      </p>
+      <p>
+        Experience the flavors and traditions: <b>welcome to Festa Junina!</b>
+      </p>
+    </section>
+  </aside>
+
+  <!-- Canvas estrelas e fogos -->
+  <canvas id="stars"></canvas>
+  <canvas id="fogos"></canvas>
+
+  <!-- Estrela Cadente -->
+  <div class="estrela-cadente">
+    <div class="rastro"></div>
+  </div>
+
+  <!-- Bandeirinhas SVG -->
+  <div class="bandeirinhas">
+    <svg viewBox="0 0 1440 80" xmlns="http://www.w3.org/2000/svg">
+      <path id="pathbandeirinhas" d="M0,32 Q120,56 240,32 Q360,8 480,32 Q600,56 720,32 Q840,8 960,32 Q1080,56 1200,32 Q1320,8 1440,32"
+        fill="none" stroke="#222" stroke-width="2"/>
+      <g id="flags"></g>
+    </svg>
+  </div>
+
+  <!-- Sanfona Flutuante -->
+  <div class="sanfona-flutuante" id="sanfonaFloat" title="Clique para ouvir!">
+    <svg viewBox="0 0 210 96" width="100%" height="100%">
+      <rect x="16" y="25" width="38" height="46" rx="8" fill="#ac3130" stroke="#6c1915" stroke-width="3"/>
+      <rect x="156" y="25" width="38" height="46" rx="8" fill="#e8c155" stroke="#c19e3a" stroke-width="3"/>
+      <rect x="54" y="15" width="102" height="66" rx="12" fill="#fff8e3" stroke="#b0a78d" stroke-width="3"/>
+      <g>
+        <rect x="66" y="28" width="78" height="9" rx="2.3" fill="#e2cfb5"/>
+        <rect x="66" y="38" width="78" height="9" rx="2.3" fill="#e2cfb5"/>
+        <rect x="66" y="48" width="78" height="9" rx="2.3" fill="#e2cfb5"/>
+        <rect x="66" y="58" width="78" height="9" rx="2.3" fill="#e2cfb5"/>
+      </g>
+      <g>
+        <circle cx="186" cy="36" r="3.2" fill="#fff"/>
+        <circle cx="186" cy="46" r="3.2" fill="#fff"/>
+        <circle cx="186" cy="56" r="3.2" fill="#fff"/>
+        <circle cx="186" cy="66" r="3.2" fill="#fff"/>
+        <circle cx="196" cy="41" r="3.2" fill="#fff"/>
+        <circle cx="196" cy="61" r="3.2" fill="#fff"/>
+      </g>
+      <g>
+        <circle cx="25" cy="37" r="2.7" fill="#fff"/>
+        <circle cx="25" cy="47" r="2.7" fill="#fff"/>
+        <circle cx="25" cy="57" r="2.7" fill="#fff"/>
+        <circle cx="37" cy="44" r="2.7" fill="#fff"/>
+        <circle cx="37" cy="60" r="2.7" fill="#fff"/>
+      </g>
+      <g>
+        <polyline points="54,18 44,6 12,34" fill="none" stroke="#763c23" stroke-width="3" stroke-linecap="round"/>
+        <polyline points="156,18 166,6 198,34" fill="none" stroke="#b0a117" stroke-width="3" stroke-linecap="round"/>
+      </g>
+    </svg>
+    <span class="click-song">Clique para ouvir!</span>
+  </div>
+  <audio id="audioSanfona" src="music/sanfona.mp3" preload="auto"></audio>
+
+  <!-- Modal Correio Elegante -->
+  <div class="modal-bg" id="modalCorreio">
+    <div class="modal-content modal-correio">
+      <h2>Mensagens de Correio Elegante</h2>
+      <div class="comidas-lista">
+        <div class="comida-card" data-tip="Para quem faz o coração bater mais forte.">
+          <span class="img-comida" style="font-size:1.4rem;">💌</span>
+          <span>Você não é fogueira, mas acendeu meu coração!</span>
+        </div>
+        <div class="comida-card" data-tip="Convite para dançar.">
+          <span class="img-comida" style="font-size:1.4rem;">🕺</span>
+          <span>Bora dançar uma quadrilha comigo?</span>
+        </div>
+        <div class="comida-card" data-tip="Mensagem romântica.">
+          <span class="img-comida" style="font-size:1.4rem;">❤️</span>
+          <span>Você é o milho do meu curau!</span>
+        </div>
+        <div class="comida-card" data-tip="Recado bem-humorado.">
+          <span class="img-comida" style="font-size:1.4rem;">🌽</span>
+          <span>Você é o milho mais dourado da minha festa!</span>
+        </div>
+        <div class="comida-card" data-tip="Para a paquera tímida.">
+          <span class="img-comida" style="font-size:1.4rem;">😊</span>
+          <span>Sou tímido, mas queria te mandar um bilhetinho!</span>
+        </div>
+        <div class="comida-card" data-tip="Mensagem engraçada.">
+          <span class="img-comida" style="font-size:1.4rem;">🔥</span>
+          <span>Se beleza fosse fogueira, você incendiava o arraial!</span>
+        </div>
+        <div class="comida-card" data-tip="Para amigo.">
+          <span class="img-comida" style="font-size:1.4rem;">🤠</span>
+          <span>Amizade igual a sua, é prêmio de quermesse!</span>
+        </div>
+        <div class="comida-card" data-tip="Para todos.">
+          <span class="img-comida" style="font-size:1.4rem;">🎉</span>
+          <span>Feliz Festa Junina! Que não falte alegria nem paçoca!</span>
+        </div>
+      </div>
+      <button onclick="closeModalCorreio()">Fechar</button>
+    </div>
+  </div>
+
+  <div class="barracas">
+
+    <!-- Barraca Correio -->
+    <div class="barraca correio" id="barracaCorreio" style="left: 12vw;">
+      <div class="topo"></div>
+      <div class="pilares">
+        <div class="pilar"></div>
+        <div class="pilar"></div>
+      </div>
+      <div class="bandeirinhas-minis">
+        <span style="--color:#e53935"></span>
+        <span style="--color:#fbc02d"></span>
+        <span style="--color:#43a047"></span>
+        <span style="--color:#1976d2"></span>
+      </div>
+      <div class="faixa">Correio</div>
+      <div class="cora" style="font-size: 2.1rem;">💌</div>
+      <div class="barracabase"></div>
+    </div>
+
+    <!-- Barraca Jogos -->
+    <div class="barraca jogos" style="right: 14vw;">
+      <div class="topo"></div>
+      <div class="pilares">
+        <div class="pilar"></div>
+        <div class="pilar"></div>
+      </div>
+      <div class="bandeirinhas-minis">
+        <span style="--color:#1976d2"></span>
+        <span style="--color:#ffd600"></span>
+        <span style="--color:#8e24aa"></span>
+        <span style="--color:#ef6c00"></span>
+      </div>
+      <div class="faixa">Jogos</div>
+      <div class="dado">🎲</div>
+      <div class="barracabase"></div>
+    </div>
+
+    <!-- Barraca Comida -->
+    <div class="barraca comida" id="barracaComida" style="left: 50vw; transform:translateX(-50%);">
+      <div class="topo"></div>
+      <div class="pilares">
+        <div class="pilar"></div>
+        <div class="pilar"></div>
+      </div>
+      <div class="bandeirinhas-minis">
+        <span style="--color:#ffb300"></span>
+        <span style="--color:#5d4037"></span>
+        <span style="--color:#c49a43"></span>
+        <span style="--color:#ff7043"></span>
+      </div>
+      <div class="faixa">Comida</div>
+      <div class="milho">🌽</div>
+      <div class="barracabase"></div>
+    </div>
+
+  </div>
+
+  <!-- Modal Comida -->
+  <div class="modal-bg" id="modalComida">
+    <div class="modal-content modal-comida">
+      <h2>Comidas Típicas</h2>
+      <div class="comidas-lista">
+        <div class="comida-card" data-tip="Clássico! Milho cozido na espiga, servido com manteiga ou puro.">
+          <img src="images/milho-cozido.jpg" alt="Milho cozido">
+          <span>Milho cozido</span>
+        </div>
+        <div class="comida-card" data-tip="Bolinho salgado de milho e carne, tradicional do interior.">
+          <img src="images/bolinho-caipira.png" alt="Bolinho caipira">
+          <span>Bolinho caipira</span>
+        </div>
+        <div class="comida-card" data-tip="Doce cremoso feito de milho branco e leite, servido quente ou frio.">
+          <img src="images/canjica.jpg" alt="Canjica">
+          <span>Canjica</span>
+        </div>
+        <div class="comida-card" data-tip="Creme de milho, servido polvilhado com canela.">
+          <img src="images/curau.jpg" alt="Curau">
+          <span>Curau</span>
+        </div>
+        <div class="comida-card" data-tip="Pipoca feita na hora, salgada ou doce, para animar a festa.">
+          <img src="images/pipoca.jpg" alt="Pipoca">
+          <span>Pipoca</span>
+        </div>
+        <div class="comida-card" data-tip="Bolo macio feito de milho, perfeito com café.">
+          <img src="images/bolo-de-milho.jpg" alt="Bolo de milho">
+          <span>Bolo de milho</span>
+        </div>
+        <div class="comida-card" data-tip="Clássico das festas, bolo fofinho à base de fubá.">
+          <img src="images/bolo-de-fuba.jpg" alt="Bolo de fubá">
+          <span>Bolo de fubá</span>
+        </div>
+        <div class="comida-card" data-tip="Prato à base de milho flocão, servido doce ou salgado.">
+          <img src="images/cuzcuz.jpg" alt="Cuscuz">
+          <span>Cuscuz</span>
+        </div>
+        <div class="comida-card" data-tip="Pasta de milho verde embrulhada em palha e cozida.">
+          <img src="images/pamonha.jpg" alt="Pamonha">
+          <span>Pamonha</span>
+        </div>
+        <div class="comida-card" data-tip="Arroz doce cremoso com canela, tradição das festas juninas.">
+          <img src="images/arroz-doce.jpg" alt="Arroz-doce">
+          <span>Arroz-doce</span>
+        </div>
+        <div class="comida-card" data-tip="Doce de amendoim moído e açúcar, prático e saboroso.">
+          <img src="images/pacoca.jpg" alt="Paçoca">
+          <span>Paçoca</span>
+        </div>
+        <div class="comida-card" data-tip="Doce crocante feito de amendoim e rapadura.">
+          <img src="images/pe-de-moleque.jpg" alt="Pé de moleque">
+          <span>Pé de moleque</span>
+        </div>
+        <div class="comida-card" data-tip="Bolo úmido com mandioca e coco, típico do Centro-Oeste.">
+          <img src="images/mane-pelado.jpg" alt="Mané pelado">
+          <span>Mané pelado</span>
+        </div>
+        <div class="comida-card" data-tip="Maçã banhada em calda de açúcar, enfeitada com granulado.">
+          <img src="images/maca-do-amor.jpg" alt="Maçã do amor">
+          <span>Maçã do amor</span>
+        </div>
+        <div class="comida-card" data-tip="Semente típica do Sul, cozida e servida na casca.">
+          <img src="images/pinhao.jpg" alt="Pinhão">
+          <span>Pinhão</span>
+        </div>
+        <div class="comida-card" data-tip="Bebida quente de vinho com especiarias, aquece as noites juninas.">
+          <img src="images/quentao.jpg" alt="Quentão">
+          <span>Quentão</span>
+        </div>
+      </div>
+      <button onclick="closeModal()">Fechar</button>
+    </div>
+  </div>
+
+  <!-- Modal Jogos -->
+  <div class="modal-bg" id="modalJogos">
+    <div class="modal-content modal-jogos">
+      <h2>Jogos Juninos</h2>
+      <div class="comidas-lista">
+        <div class="comida-card" data-tip="Pesque um peixinho com a vara, cada peixe tem um prêmio!">
+          <img src="images/pescaria.jpg" alt="Pescaria">
+          <span>Pescaria</span>
+        </div>
+        <div class="comida-card" data-tip="Acerte e derrube todas as latas com uma bola.">
+          <img src="images/derruba-latas.jpg" alt="Derruba-latas">
+          <span>Derruba-latas</span>
+        </div>
+        <div class="comida-card" data-tip="Jogue a bolinha na boca do palhaço para ganhar pontos.">
+          <img src="images/boca-do-palhaco.jpg" alt="Boca do Palhaço">
+          <span>Boca do Palhaço</span>
+        </div>
+        <div class="comida-card" data-tip="Equilibre o ovo na colher e corra até o final sem deixar cair.">
+          <img src="images/corrida-do-ovo.jpg" alt="Corrida do Ovo">
+          <span>Corrida do Ovo</span>
+        </div>
+        <div class="comida-card" data-tip="Times opostos puxam uma corda, vence quem conseguir arrastar o outro.">
+          <img src="images/cabo-de-guerra.jpg" alt="Cabo de Guerra">
+          <span>Cabo de Guerra</span>
+        </div>
+        <div class="comida-card" data-tip="Pule dentro do saco até a linha de chegada.">
+          <img src="images/corrida-do-saco.jpg" alt="Corrida do Saco">
+          <span>Corrida do Saco</span>
+        </div>
+        <div class="comida-card" data-tip="Complete sua cartela com os números sorteados e grite “Bingo!”.">
+          <img src="images/bingo.jpg" alt="Bingo">
+          <span>Bingo</span>
+        </div>
+        <div class="comida-card" data-tip="Tente acertar argolas em garrafas ou pinos.">
+          <img src="images/jogo-da-argola.jpg" alt="Jogo da Argola">
+          <span>Jogo da Argola</span>
+        </div>
+        <div class="comida-card" data-tip="Mire e acerte o alvo com dardos ou bolinhas.">
+          <img src="images/tiro-ao-alvo.jpg" alt="Tiro ao Alvo">
+          <span>Tiro ao Alvo</span>
+        </div>
+        <div class="comida-card" data-tip="Dance ao redor das cadeiras e sente quando a música parar.">
+          <img src="images/danca-da-cadeira.jpg" alt="Dança da Cadeira">
+          <span>Dança da Cadeira</span>
+        </div>
+        <div class="comida-card" data-tip="Envie mensagens anônimas e divertidas para amigos.">
+          <img src="images/correio-elegante.jpg" alt="Correio Elegante">
+          <span>Correio Elegante</span>
+        </div>
+        <div class="comida-card" data-tip="Procure pistas e encontre o tesouro escondido.">
+          <img src="images/caca-ao-tesouro.jpg" alt="Caça ao Tesouro">
+          <span>Caça ao Tesouro</span>
+        </div>
+        <div class="comida-card" data-tip="Descubra a palavra antes de montar o bonequinho da forca.">
+          <img src="images/forca-junina.jpg" alt="Forca Junina">
+          <span>Forca Junina</span>
+        </div>
+        <div class="comida-card" data-tip="Igual ao derruba-latas, tente derrubar todas as latas com poucas bolas.">
+          <img src="images/tomba-latas.jpg" alt="Tomba-Latas">
+          <span>Tomba-Latas</span>
+        </div>
+        <div class="comida-card" data-tip="Ande com latas amarradas nos pés, tentando manter o equilíbrio.">
+          <img src="images/pe-de-lata.jpg" alt="Pé de Lata">
+          <span>Pé de Lata</span>
+        </div>
+        <div class="comida-card" data-tip="Monte no touro mecânico e tente não cair!">
+          <img src="images/touro-mecanico.jpg" alt="Touro mecânico">
+          <span>Touro mecânico</span>
+        </div>
+      </div>
+      <button onclick="closeModalJogos()">Fechar</button>
+    </div>
+  </div>
+
+  <!-- Fogueira -->
+  <div class="fogueira">
+    <div class="lenha">
+      <span style="--deg:-22deg;--l:4px;"></span>
+      <span style="--deg:22deg;--l:51px;"></span>
+      <span style="--deg:-5deg;--l:27px;"></span>
+    </div>
+    <div class="chama">
+      <span></span><span></span><span></span>
+    </div>
+  </div>
+
+  <!-- Balão -->
+  <div class="balao2" id="balao2">
+    <svg viewBox="0 0 175 250" width="100%" height="245px">
+      <defs>
+        <pattern id="texture" patternUnits="userSpaceOnUse" width="60" height="60">
+          <rect x="0" y="0" width="60" height="60" fill="#fff" opacity="0.09"/>
+          <path d="M0,12 l60,16 M0,34 l60,12 M14,0 l9,60 M32,0 l2,60" stroke="#000" stroke-width="0.6" opacity="0.13"/>
+        </pattern>
+      </defs>
+      <polygon points="85,8 168,59 149,190 85,232 21,190 2,59"
+        fill="#e37049" stroke="#111" stroke-width="4"/>
+      <polygon points="85,8 168,59 85,77 2,59"
+        fill="#a63a54" stroke="#111" stroke-width="4"/>
+      <polygon points="85,77 168,59 149,190 85,232"
+        fill="#e5b84a" stroke="#111" stroke-width="4"/>
+      <polygon points="85,77 85,232 21,190 2,59"
+        fill="#607d7a" stroke="#111" stroke-width="4"/>
+      <polygon points="85,77 149,190 85,232 21,190"
+        fill="#f6e068" stroke="#111" stroke-width="4"/>
+      <polygon points="85,8 168,59 149,190 85,232 21,190 2,59"
+        fill="url(#texture)" opacity="0.45"/>
+    </svg>
+    <div class="corda-balao2"></div>
+    <div class="fogo-balao2">
+      <svg width="42" height="60">
+        <path d="M21,1 Q31,18 16,37 Q24,35 30,54 Q23,51 15,59 Q17,49 10,40 Q20,40 10,23 Q15,19 21,1 Z"
+              fill="#ffe082"/>
+        <path d="M21,9 Q24,22 19,37 Q22,36 24,50 Q19,48 15,55 Q15,46 12,40 Q16,40 13,26 Q16,20 21,9 Z"
+              fill="#ff9800" opacity="0.9"/>
+        <path d="M21,14 Q22,28 18,40 Q20,40 22,47 Q19,47 17,53 Q16,47 14,43 Q16,44 14,30 Q18,22 21,14 Z"
+              fill="#ffd54f" opacity="0.85"/>
+      </svg>
+      <div class="chama" style="background: radial-gradient(ellipse at center, #fffde7 60%, #ffe082 100%);"></div>
+      <div class="chama chama2" style="background: radial-gradient(ellipse at center, #ff9800 60%, #d84315 100%);"></div>
+      <div class="chama chama3" style="background: radial-gradient(ellipse at center, #f44336 60%, #ffeb3b 100%);"></div>
+    </div>
+  </div>
+
+  <!-- Bandeira do Brasil -->
+  <div class="brasil">
+    <div class="haste"></div>
+    <div class="bandeira">
+      <div class="losango">
+        <svg viewBox="0 0 44 30">
+          <polygon points="22,0 44,15 22,30 0,15" fill="#ffeb3b" />
+        </svg>
+      </div>
+      <div class="circulo">
+        <div class="faixa"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="grama"></div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
