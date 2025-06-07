@@ -188,40 +188,51 @@ document.addEventListener('keydown', function(e){
 
 // 7. TOOLTIP DAS COMIDAS/JOGOS
 (function() {
-  let tooltip;
+  function getActiveTooltipContainer(el) {
+    // Procura o .modal-content ancestral do .comida-card
+    let modalContent = el.closest('.modal-content');
+    return modalContent ? modalContent.querySelector('.tooltip-jn') : null;
+  }
+  let currentTooltip = null;
   document.body.addEventListener('mouseover', function(e) {
-    let el = e.target.closest('.modal-jogos .comida-card[data-tip], .modal-comida .comida-card[data-tip]');
+    let el = e.target.closest('.modal-jogos .comida-card[data-tip], .modal-comida .comida-card[data-tip], .modal-correio .comida-card[data-tip]');
     if (el) {
-      if (!tooltip) {
-        tooltip = document.createElement('div');
-        tooltip.className = 'tooltip-jn';
-        document.body.appendChild(tooltip);
+      let tooltip = getActiveTooltipContainer(el);
+      if (tooltip) {
+        tooltip.innerText = el.getAttribute('data-tip');
+        tooltip.classList.add('show');
+        currentTooltip = tooltip;
+        positionTooltipInModal(e, tooltip, el);
       }
-      tooltip.innerText = el.getAttribute('data-tip');
-      tooltip.classList.add('show');
-      positionTooltip(e);
     }
   });
   document.body.addEventListener('mousemove', function(e) {
-    if (tooltip && tooltip.classList.contains('show')) {
-      positionTooltip(e);
+    if (currentTooltip && currentTooltip.classList.contains('show')) {
+      let el = document.elementFromPoint(e.clientX, e.clientY);
+      let card = el && el.closest('.comida-card[data-tip]');
+      if (card) {
+        positionTooltipInModal(e, currentTooltip, card);
+      }
     }
   });
   document.body.addEventListener('mouseout', function(e) {
-    let el = e.target.closest('.modal-jogos .comida-card[data-tip], .modal-comida .comida-card[data-tip]');
-    if (el && tooltip) {
-      tooltip.classList.remove('show');
+    let el = e.target.closest('.modal-jogos .comida-card[data-tip], .modal-comida .comida-card[data-tip], .modal-correio .comida-card[data-tip]');
+    if (el && currentTooltip) {
+      currentTooltip.classList.remove('show');
+      currentTooltip = null;
     }
   });
-  function positionTooltip(e) {
-    if (tooltip) {
-      let x = e.clientX + 16;
-      let y = e.clientY - 12;
-      tooltip.style.left = x + 'px';
-      tooltip.style.top = y + 'px';
-    }
+  function positionTooltipInModal(e, tooltip, card) {
+    let modal = tooltip.closest('.modal-content');
+    if (!modal) return;
+    let modalRect = modal.getBoundingClientRect();
+    let mouseX = e.clientX - modalRect.left;
+    let mouseY = e.clientY - modalRect.top;
+    tooltip.style.left = mouseX + 18 + 'px';
+    tooltip.style.top = mouseY - 12 + 'px';
   }
 })();
+
 
 // 8. SANFONA FLUTUANTE
 const sanfona = document.getElementById('sanfonaFloat');

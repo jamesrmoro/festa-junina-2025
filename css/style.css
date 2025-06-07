@@ -725,7 +725,7 @@ canvas#stars {
 
 /* ====================== Tooltip ====================== */
 .tooltip-jn {
-  position: fixed;
+  position: absolute;
   background: #ffe082;
   color: #a45a0a;
   font-size: 0.93rem;
@@ -918,7 +918,14 @@ canvas#stars {
 
   .tooltip-jn.show {
 
-    left: 30px !important;
+    left: 12px !important;
+    top: 25px !important;
+  }
+
+  .tooltip-jn {
+    background: #000000;
+    color: #ffffff;
+    font-size: 13px;
   }
 
 }
