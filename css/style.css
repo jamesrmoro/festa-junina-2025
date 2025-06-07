@@ -916,4 +916,9 @@ canvas#stars {
     scrollbar-color: #3f51b5 #fffbe8;
   }
 
+  .tooltip-jn.show {
+
+    left: 30px !important;
+  }
+
 }
