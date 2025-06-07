@@ -5,7 +5,7 @@ Este projeto celebra a **Festa Junina**, uma das festas populares mais tradicion
 
 ## ✨ Demonstração
 
-> [Veja a demo online (recomendado em desktop)](URL-DA-DEMO-AQUI)
+> [Veja a demo online (recomendado em desktop)](https://festa-junina-2025.jamesrmoro.me/)
 
 ## 📅 Sobre o Desafio
 
@@ -32,7 +32,7 @@ Neste projeto, quis compartilhar um pouquinho da cultura brasileira, apresentand
 ## 🖼️ Screenshot
 
 <p align="center">
-  <img src="docs/festa-junina-demo.png" alt="Festa Junina Demo" width="700">
+  <img src="https://festa-junina-2025.jamesrmoro.me/images/cover.png" alt="Festa Junina Demo" width="700">
 </p>
 
 ---

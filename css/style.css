@@ -265,7 +265,7 @@ canvas#stars {
   border: 2.4px solid #b15a16;
   border-radius: 8px 8px 14px 14px/9px 10px 16px 20px;
   color: #e53935;
-  font-size: 1.6rem;
+  font-size: 19px;
   letter-spacing: 1.5px;
   text-align: center;
   font-weight: bold;
@@ -750,7 +750,7 @@ canvas#stars {
 .click-song {
   background-color: #fff;
   padding: 3px 20px 5px 20px;
-  width: 145px;
+  width: 180px;
   display: block;
   text-align: center;
   margin: 0 auto;
@@ -760,6 +760,11 @@ canvas#stars {
 /* ====================== Media Queries ====================== */
 
 @media (max-width: 800px) {
+
+  .bandeirinhas {
+    top: inherit;
+    bottom: 170px;
+  }
 
   .barracas {
     position: absolute;
