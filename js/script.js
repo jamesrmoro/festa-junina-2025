@@ -9,11 +9,11 @@ function toggleMenuFJ() {
   menu.classList.toggle('aberta', aberto);
   if (aberto) {
     btnMenu.classList.add('fechar');
-    btnMenu.setAttribute('aria-label', 'Fechar menu');
+    btnMenu.setAttribute('aria-label', 'Close menu');
     menuIcon.innerHTML = '✖';
   } else {
     btnMenu.classList.remove('fechar');
-    btnMenu.setAttribute('aria-label', 'Abrir menu');
+    btnMenu.setAttribute('aria-label', 'Open menu');
     menuIcon.innerHTML = '☰';
   }
 }
@@ -27,7 +27,7 @@ document.addEventListener('click', function(e){
     aberto = false;
     menu.classList.remove('aberta');
     btnMenu.classList.remove('fechar');
-    btnMenu.setAttribute('aria-label', 'Abrir menu');
+    btnMenu.setAttribute('aria-label', 'Open menu');
     menuIcon.innerHTML = '☰';
   }
 });
@@ -36,7 +36,7 @@ document.addEventListener('keydown', function(e){
     aberto = false;
     menu.classList.remove('aberta');
     btnMenu.classList.remove('fechar');
-    btnMenu.setAttribute('aria-label', 'Abrir menu');
+    btnMenu.setAttribute('aria-label', 'Open menu');
     menuIcon.innerHTML = '☰';
   }
 });
