@@ -644,6 +644,7 @@ canvas#stars {
 .modal-content button:hover {
   background: #ffe082cc;
 }
+.modal-correio h2,
 .modal-comida h2,
 .modal-jogos h2 {
   font-family: 'Segoe UI', Arial, sans-serif;
